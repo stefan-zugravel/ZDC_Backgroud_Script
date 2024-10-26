@@ -59,7 +59,7 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
   text->Draw();
 
 
-  c1->Print(TString::Format("%d/Background_study_ZN%s_%s_%d.pdf",irun,side.Data(), channel.Data(),irun));
+  c1->Print(TString::Format("results/%d/ratio/Background_study_ZN%s_%s_%d.pdf",irun,side.Data(), channel.Data(),irun));
   c1->Close();
   f->Close();
 }
@@ -71,7 +71,7 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
 void get_ratio()
 {	
     //gSystem->Exec("bash /home/Work/ZDC_Backgroud_Script/get_plot.bash");
-    TString output = gSystem->GetFromPipe("bash get_plot.bash");
+    TString output = gSystem->GetFromPipe("bash get_ratio.bash");
     int RunNumber = output.Atoi(); // Converte l'output in intero
     //std::cout << "Il numero intero passato dallo script è: " << RunNumber << std::endl;
 

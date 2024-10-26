@@ -63,7 +63,7 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
   text->Draw();
 
 
-  c1->Print(TString::Format("%d/Peak1p_ZP%s_%s_%d.pdf",irun,side.Data(), channel.Data(),irun));
+  c1->Print(TString::Format("results/%d/1p/Peak1p_ZP%s_%s_%d.pdf",irun,side.Data(), channel.Data(),irun));
   c1->Close();
   f->Close();
 }
