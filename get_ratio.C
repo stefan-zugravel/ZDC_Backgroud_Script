@@ -70,8 +70,8 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
 
 void get_ratio()
 {	
-    //gSystem->Exec("bash /home/stefan/Desktop/ZDC_Backgroud_Script/get_plot.bash");
-    TString output = gSystem->GetFromPipe("bash /home/stefan/Desktop/ZDC_Backgroud_Script/get_plot.bash");
+    //gSystem->Exec("bash /home/Work/ZDC_Backgroud_Script/get_plot.bash");
+    TString output = gSystem->GetFromPipe("bash get_plot.bash");
     int RunNumber = output.Atoi(); // Converte l'output in intero
     //std::cout << "Il numero intero passato dallo script è: " << RunNumber << std::endl;
 
