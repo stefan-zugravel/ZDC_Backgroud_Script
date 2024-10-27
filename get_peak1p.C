@@ -16,7 +16,7 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
   h->GetYaxis()->SetTitleOffset(1.2);
   gStyle->SetPalette(1,0);
 
-  TF1 *fitFunc = new TF1("fitFunc", "[0]*exp(-x/[1]) + [2]*exp(-0.5*((x-[3])/[4])^2) + [5]*exp(-0.5*((x-[6])/[7])^2)", 15, 250);
+  TF1 *fitFunc = new TF1("fitFunc", "[0]*exp(-x/[1]) + [2]*exp(-0.5*((x-[3])/[4])^2) + [5]*exp(-0.5*((x-[6])/[7])^2) + [8]*exp(-0.5*((x-[9])/[10])^2) ", 15, 250);
 
   fitFunc->SetParName(0, "Exp_A");
   fitFunc->SetParName(1, "Exp_tau");
@@ -26,6 +26,9 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
   fitFunc->SetParName(5, "G2_A");
   fitFunc->SetParName(6, "G2_mean");
   fitFunc->SetParName(7, "G2_sigma");
+  fitFunc->SetParName(8, "G3_A");
+  fitFunc->SetParName(9, "G3_mean");
+  fitFunc->SetParName(10,"G3_sigma");
 
   fitFunc->SetParameter(0, 0.5*h->GetMaximum());          // Exp_A
   fitFunc->SetParameter(1, 125);             // Exp_tau
@@ -35,6 +38,9 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
   fitFunc->SetParameter(5, 0.4*h->GetMaximum());          // CB2_A
   fitFunc->SetParameter(6, 73);              // CB2_mean
   fitFunc->SetParameter(7, 10);              // CB2_sigma
+  fitFunc->SetParameter(8, 0.1*h->GetMaximum());          // CB2_A
+  fitFunc->SetParameter(9, 140);              // CB2_mean
+  fitFunc->SetParameter(10,15);              // CB2_sigma
 
   fitFunc->SetParLimits(0,  0.2*h->GetMaximum(), 0.8*h->GetMaximum());  // Exp_A
   fitFunc->SetParLimits(1, 75, 175);       // Exp_tau
@@ -44,6 +50,9 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
   fitFunc->SetParLimits(5, 0.1*h->GetMaximum(), 0.7*h->GetMaximum());  // CB2_A
   fitFunc->SetParLimits(6, 50, 100);         // CB2_mean
   fitFunc->SetParLimits(7, 5, 15);        // CB2_sigma
+  fitFunc->SetParLimits(8, 0.01*h->GetMaximum(), 0.3*h->GetMaximum());  // CB2_A
+  fitFunc->SetParLimits(9, 100, 150);         // CB2_mean
+  fitFunc->SetParLimits(10,10, 25);        // CB2_sigma  
 
   h->Fit(fitFunc, "R");
 
