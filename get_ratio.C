@@ -68,15 +68,17 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
 //MO_QcZDCRecTask_h_TDC_ZNA_SUM_V_559114.root
 
 
-void get_ratio()
+void get_ratio(int RunNumber = 0)
 {	
     //gSystem->Exec("bash /home/Work/ZDC_Backgroud_Script/get_plot.bash");
-    TString output = gSystem->GetFromPipe("bash get_ratio.bash");
-    int RunNumber = output.Atoi(); // Converte l'output in intero
+    //TString output = gSystem->GetFromPipe("bash get_ratio.bash");
+    //int RunNumber = output.Atoi(); // Converte l'output in intero
     //std::cout << "Il numero intero passato dallo script è: " << RunNumber << std::endl;
 
 	CalculateRatios(RunNumber,"A","TC");
 	CalculateRatios(RunNumber,"A","SUM");
 	CalculateRatios(RunNumber,"C","TC");
 	CalculateRatios(RunNumber,"C","SUM");
+
+  std::cout << "Done elaboratin Run: " << RunNumber << std::endl;
 }

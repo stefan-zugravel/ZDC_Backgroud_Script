@@ -107,15 +107,17 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
 
 
 
-void get_peak1n()
+void get_peak1n(int RunNumber = 0)
 {	
     //gSystem->Exec("bash /home/Work/ZDC_Backgroud_Script/get_plot.bash");
-    TString output = gSystem->GetFromPipe("bash get_peak1n_plot.bash");
-    int RunNumber = output.Atoi(); // Converte l'output in intero
+    //TString output = gSystem->GetFromPipe("bash get_peak1n.bash");
+    //int RunNumber = output.Atoi(); // Converte l'output in intero
     //std::cout << "Il numero intero passato dallo script è: " << RunNumber << std::endl;
 
 	CalculateRatios(RunNumber,"A","TC");
 	CalculateRatios(RunNumber,"A","SUM");
 	CalculateRatios(RunNumber,"C","TC");
 	CalculateRatios(RunNumber,"C","SUM");
+
+  std::cout << "Done elaboratin Run: " << RunNumber << std::endl;
 }
