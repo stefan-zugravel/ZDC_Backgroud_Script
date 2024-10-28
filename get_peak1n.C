@@ -16,7 +16,7 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
   h->GetYaxis()->SetTitleOffset(1.2);
   gStyle->SetPalette(1,0);
 
-  TF1 *fitFunc = new TF1("fitFunc", "[0]*exp(-x/[1]) + [2]*exp(-0.5*((x-[3])/[4])^2) + [5]*exp(-0.5*((x-[6])/[7])^2) + [8]*exp(-0.5*((x-[9])/[10])^2) + [11]*exp(-0.5*((x-[12])/[13])^2) + [14]*exp(-0.5*((x-[15])/[16])^2)", 15, 150);
+  TF1 *fitFunc = new TF1("fitFunc", "[0]*exp(-x/[1]) + [2]*exp(-0.5*((x-[3])/[4])^2) + [5]*exp(-0.5*((x-[6])/[7])^2) + [8]*exp(-0.5*((x-[9])/[10])^2) + [11]*exp(-0.5*((x-[12])/[13])^2) + [14]*exp(-0.5*((x-[15])/[16])^2)", 12, 150);
 
   fitFunc->SetParName(0, "Exp_A");
   fitFunc->SetParName(1, "Exp_tau");
