@@ -79,8 +79,8 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
   fitFunc->SetParLimits(13, 5, 15);        // CB4_sigma
 
   fitFunc->SetParLimits(14, 0, h->GetMaximum());  // CB4_A
-  fitFunc->SetParLimits(15, 130, 170);         // CB4_mean
-  fitFunc->SetParLimits(16, 10, 20);        // CB4_sigma
+  fitFunc->SetParLimits(15, 110, 170);         // CB4_mean
+  fitFunc->SetParLimits(16, 10, 30);        // CB4_sigma
 
   h->Fit(fitFunc, "R");
 
