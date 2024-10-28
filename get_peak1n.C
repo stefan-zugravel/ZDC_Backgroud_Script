@@ -91,13 +91,39 @@ void CalculateRatios( int irun, TString side = "", TString channel = "")
   line->SetLineWidth(3);    // Set line width
   line->Draw("same");
 
-  std::ostringstream oss;
-  oss << "1n position: " << fitFunc->GetParameter(3) << "  Run number: " << irun;
 
-  TText *text = new TText(fitFunc->GetParameter(3)+2, h->GetMinimum(), oss.str().c_str());
-  text->SetTextColor(kBlack);  // Set text color
-  text->SetTextSize(0.04);      // Set the text size
-  text->Draw();
+  std::ostringstream RunNumber;
+  RunNumber << "Run number: " << irun;
+
+  TText *text0 = new TText(95, h->GetMaximum(), RunNumber.str().c_str());
+  text0->SetTextColor(kBlack);  // Set text color
+  text0->SetTextSize(0.04);      // Set the text size
+  text0->Draw();
+
+
+  std::ostringstream position;
+  position   << "1n position  : " << fitFunc->GetParameter(3);
+
+  std::ostringstream sigma;
+  sigma      << "1n sigma     : " << fitFunc->GetParameter(4);
+
+  std::ostringstream resolution;
+  resolution << "1n resolution: " << (fitFunc->GetParameter(4) / fitFunc->GetParameter(3))*100 << " %"; 
+
+  TText *text1 = new TText(fitFunc->GetParameter(3)+2, h->GetMinimum()*8, position.str().c_str());
+  text1->SetTextColor(kBlack);  // Set text color
+  text1->SetTextSize(0.04);      // Set the text size
+  text1->Draw();
+
+  TText *text2 = new TText(fitFunc->GetParameter(3)+2, h->GetMinimum()*4, sigma.str().c_str());
+  text2->SetTextColor(kBlack);  // Set text color
+  text2->SetTextSize(0.04);      // Set the text size
+  text2->Draw();
+
+  TText *text3 = new TText(fitFunc->GetParameter(3)+2, h->GetMinimum()*2, resolution.str().c_str());
+  text3->SetTextColor(kBlack);  // Set text color
+  text3->SetTextSize(0.04);      // Set the text size
+  text3->Draw();
 
 
   c1->Print(TString::Format("results/%d/1n/Peak1n_ZN%s_%s_%d.pdf",irun,side.Data(), channel.Data(),irun));
